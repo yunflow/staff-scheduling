@@ -10,4 +10,9 @@ public class Architect extends Designer {
         super(id, name, age, salary, equipment, bonus);
         this.stock = stock;
     }
+
+    @Override
+    public String toString() {
+        return getDetails() + "\tDesigner\t" + getStatus() + "\t" + getBonus() + "\t" + stock + "\t" + getEquipment().getDescription();
+    }
 }

@@ -30,29 +30,31 @@ public class NameListService {
             int age = Integer.parseInt(Data.EMPLOYEES[i][3]);
             double salary = Double.parseDouble(Data.EMPLOYEES[i][4]);
 
-            //
+            // implement equipment, bonus, stock
             Equipment equipment = null;
             double bonus;
             int stock;
 
             // EMPLOYEE, PROGRAMMER, DESIGNER, ARCHITECT
             switch (type) {
-                case Data.EMPLOYEE -> employees[i] = new Employee(id, name, age, salary);
-                case Data.PROGRAMMER -> {
+                case Data.EMPLOYEE:
+                    employees[i] = new Employee(id, name, age, salary);
+                    break;
+                case Data.PROGRAMMER:
                     equipment = creatEquipment(i);
                     employees[i] = new Programmer(id, name, age, salary, equipment);
-                }
-                case Data.DESIGNER -> {
+                    break;
+                case Data.DESIGNER:
                     equipment = creatEquipment(i);
                     bonus = Double.parseDouble(Data.EMPLOYEES[i][5]);
                     employees[i] = new Designer(id, name, age, salary, equipment, bonus);
-                }
-                case Data.ARCHITECT -> {
+                    break;
+                case Data.ARCHITECT:
                     equipment = creatEquipment(i);
                     bonus = Double.parseDouble(Data.EMPLOYEES[i][5]);
                     stock = Integer.parseInt(Data.EMPLOYEES[i][6]);
                     employees[i] = new Architect(id, name, age, salary, equipment, bonus, stock);
-                }
+                    break;
             }
         }
     }
@@ -65,15 +67,12 @@ public class NameListService {
         int type = Integer.parseInt(Data.EQUIPMENTS[index][0]);
 
         switch (type) {
-            case Data.PC -> {
+            case Data.PC:
                 return new PC(Data.EQUIPMENTS[index][1], Data.EQUIPMENTS[index][2]);
-            }
-            case Data.NOTEBOOK -> {
+            case Data.NOTEBOOK:
                 return new NoteBook(Data.EQUIPMENTS[index][1], Double.parseDouble(Data.EQUIPMENTS[index][2]));
-            }
-            case Data.PRINTER -> {
+            case Data.PRINTER:
                 return new Printer(Data.EQUIPMENTS[index][1], Data.EQUIPMENTS[index][2]);
-            }
         }
 
         return null;
